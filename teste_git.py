@@ -11,11 +11,11 @@ def menu():
 """)
 
 def criar_tarefa():
-    tarefa = input("Digite sua tarefa abaixo:\n").split()
+    tarefa = input("Digite sua tarefa abaixo:\n").strip()
     lista_de_tarefas.append(tarefa)
 
 def listar_tarefas(lista):
-    if lista_de_tarefas == "":
+    if not lista:
       print("Lista Vazia.")
     else:
       print("To-Do List:")
@@ -23,15 +23,17 @@ def listar_tarefas(lista):
         print(f"{id} - {tarefa}")
 
 def deletar_tarefa(lista):
-    if lista == "":
+    if not lista:
        print("Lista Vazia.")
     else:   
       listar_tarefas(lista)
       deletar = int(input("selecione a tarefa que você deseja deletar ou zero para cancelar a operação: "))
       if len(lista) >= deletar >= 1:
-         lista.pop(deletar-1)
+        lista.pop(deletar-1)
+      elif deletar == 0:
+        print("Voltando ao menu...")
       else:
-         print("Fora de alcance.")
+         print("Fora do alcance")
          
        
 #===================================================================#
